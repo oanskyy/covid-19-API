@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>covid-19</title>
+	</head>
+	<body>
+		<div id="container">
+			<h1>Total Covid Cases</h1>
+			<p id="total-cases"></p>
+		</div>
+	</body>
+	<script>
+		console.log("Get Covid Data")
+
+		const getCovidData = async () => {
+			console.log("Processing...")
+			const request = await fetch("https://covid19.mathdro.id/api")
+			const data = await request.json()
+			return data
+		}
+
+		getCovidData().then(covidData => {
+			console.log("index.html 16 | covid data", covidData)
+			document.getElementById("total-cases").innerText =
+				covidData.confirmed.value
+		})
+	</script>
+</html>
